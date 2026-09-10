@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens — "iris garden" palette on white.
+
+   Contrast against #ffffff (WCAG AA needs 4.5:1 for body text):
+     iris   #692475  →  9.2:1  ✅ text, links, primary accents
+     olive  #6A6B4E  →  5.4:1  ✅ secondary / meta text
+     lilac  #A47DAB  →  3.2:1  ❌ decorative only — rules, fills, dots
+     sage   #82AB7D  →  2.5:1  ❌ decorative only — rules, fills, dots
+   Never put body copy in lilac or sage on white.
+------------------------------------------------------------------- */
+@theme {
+  /* grounds */
+  --color-ground: #ffffff;
+  --color-surface: #faf8fb;
+  --color-surface-2: #f4eff6;
+
+  /* text */
+  --color-ink: #1c1520;
+  --color-ink-muted: #5b5462;
+  --color-ink-meta: #6a6b4e;
+
+  /* palette */
+  --color-iris: #692475;
+  --color-iris-deep: #4d1a56;
+  --color-lilac: #a47dab;
+  --color-lilac-tint: #efe7f1;
+  --color-sage: #82ab7d;
+  --color-sage-tint: #e7efe5;
+  --color-olive: #6a6b4e;
+  --color-olive-tint: #eceada;
+
+  /* lines */
+  --color-rule: #e9e3eb;
+  --color-rule-strong: #d3c9d6;
+
+  /* type */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-karla), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* motion — the "still cooking" dot. Muted by the
+     prefers-reduced-motion block at the bottom of this file. */
+  --animate-simmer: simmer 2.6s ease-in-out infinite;
+}
+
+@keyframes simmer {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Anchor targets clear the sticky header */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-iris);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-lilac-tint);
+    color: var(--color-iris-deep);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
