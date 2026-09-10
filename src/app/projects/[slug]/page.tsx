@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { publishedProjects, getProject } from "@/content/projects";
+import { published, publishedAll } from "@/lib/content";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StackList } from "@/components/StackList";
@@ -23,10 +24,14 @@ export async function generateMetadata(
 
   if (!project) return {};
 
+  // Never let an authoring note become the social-card description.
+  const description =
+    published(project.tagline) ?? `${project.name} — a project by Paulina Vvedenskaya.`;
+
   return {
     title: project.name,
-    description: project.tagline,
-    openGraph: { title: project.name, description: project.tagline },
+    description,
+    openGraph: { title: project.name, description },
   };
 }
 
@@ -35,6 +40,12 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
   const project = getProject(slug);
 
   if (!project) notFound();
+
+  // Sections whose paragraphs are all authoring notes are dropped entirely,
+  // so an unwritten write-up shows nothing rather than a note-to-self.
+  const sections = (project.sections ?? [])
+    .map((section) => ({ ...section, body: publishedAll(section.body) }))
+    .filter((section) => section.body.length > 0);
 
   return (
     <>
@@ -60,12 +71,14 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                 {project.name}
               </h1>
 
-              <p className="max-w-[60ch] text-lg leading-relaxed text-ink-muted">
-                {project.tagline}
-              </p>
+              {published(project.tagline) ? (
+                <p className="max-w-[60ch] text-lg leading-relaxed text-ink-muted">
+                  {project.tagline}
+                </p>
+              ) : null}
             </div>
 
-            <StackList items={project.stack} />
+            <StackList items={publishedAll(project.stack)} />
 
             {project.links && project.links.length > 0 ? (
               <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -87,9 +100,9 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
 
           <ProjectDemo demo={project.demo} />
 
-          {project.sections && project.sections.length > 0 ? (
+          {sections.length > 0 ? (
             <div className="flex flex-col gap-9">
-              {project.sections.map((section) => (
+              {sections.map((section) => (
                 <section key={section.heading} className="flex flex-col gap-3">
                   <h2 className="font-display text-xl font-semibold tracking-tight text-ink">
                     {section.heading}
@@ -106,10 +119,8 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
               ))}
             </div>
           ) : (
-            <p className="rounded-xl border border-dashed border-rule-strong bg-surface px-6 py-8 text-center font-mono text-[11px] leading-relaxed text-ink-muted">
-              Write-up coming. Add{" "}
-              <span className="text-iris">sections</span> to this project in
-              content/projects.ts.
+            <p className="rounded-xl border border-dashed border-rule-strong bg-surface px-6 py-8 text-center text-[15px] text-ink-muted">
+              Write-up still cooking.
             </p>
           )}
         </article>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Project, ProjectAccent } from "@/lib/types";
+import { published, publishedAll } from "@/lib/content";
 import { StackList } from "@/components/StackList";
 
 /**
@@ -32,10 +33,10 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <p className="flex-1 text-[15px] leading-relaxed text-ink-muted">
-          {project.tagline}
+          {published(project.tagline)}
         </p>
 
-        <StackList items={project.stack} />
+        <StackList items={publishedAll(project.stack)} />
 
         <div className="flex items-center justify-between gap-3">
           <span
