@@ -21,9 +21,9 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-// TODO: swap in your real domain once you buy it — this makes social
-// card images and canonical URLs resolve absolutely.
-const SITE_URL = "https://example.com";
+// GitHub Pages user site. If you later buy a domain, change this and
+// add a CNAME file to public/ with the bare domain in it.
+const SITE_URL = "https://paulina-v.github.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

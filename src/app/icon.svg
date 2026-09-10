@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PV">
+  <rect width="64" height="64" rx="14" fill="#692475"/>
+  <!-- Letterforms are drawn as paths so the mark renders identically
+       everywhere; a text element would depend on the viewer's fonts. -->
+  <g fill="#ffffff">
+    <!-- P -->
+    <path d="M14 16h10.6c3.1 0 5.5.8 7.1 2.3 1.6 1.5 2.4 3.6 2.4 6.2 0 2.6-.8 4.7-2.4 6.2-1.6 1.5-4 2.3-7.1 2.3h-4.9V48H14V16zm6.1 5.1v6.8h3.8c1.4 0 2.4-.3 3.1-.9.7-.6 1-1.4 1-2.5s-.3-1.9-1-2.5c-.7-.6-1.7-.9-3.1-.9h-3.8z"/>
+    <!-- V -->
+    <path d="M31.4 16h6.7l6.1 21.2L50.3 16H57L47.2 48h-6.1L31.4 16z"/>
+  </g>
+</svg>
