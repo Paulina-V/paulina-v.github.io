@@ -15,28 +15,28 @@ export function ProjectDemo({ demo }: { demo?: Demo }) {
 
   if (resolved.kind === "none") {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-rule bg-surface-2">
-        {/* Decorative placeholder standing in for a demo that isn't
-            recorded yet. Muted and silent, so it can autoplay. */}
-        <video
-          className="h-full w-full object-cover"
-          src="/demos/still-cooking.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden
-        />
-
-        <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/70 via-ink/10 to-transparent p-4">
-          <span className="flex items-center gap-2 rounded-full border border-sage/60 bg-ground/90 px-3 py-1.5 font-mono text-[11px] leading-none tracking-wide text-olive uppercase backdrop-blur-sm">
-            <span
-              aria-hidden
-              className="h-1.5 w-1.5 rounded-full bg-sage animate-simmer"
-            />
-            Still cooking
-          </span>
+      <div className="flex w-full flex-col items-center gap-4 rounded-xl border border-dashed border-rule-strong bg-surface px-6 py-12">
+        {/* Decorative stand-in for a demo that isn't recorded yet.
+            Silent and muted, so browsers allow it to autoplay. */}
+        <div className="h-24 w-24 overflow-hidden rounded-full border border-rule-strong bg-surface-2">
+          <video
+            className="h-full w-full object-cover"
+            src="/demos/still-cooking.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden
+          />
         </div>
+
+        <span className="flex items-center gap-2 font-mono text-[11px] leading-none tracking-wide text-olive uppercase">
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full bg-sage animate-simmer"
+          />
+          Demo still cooking
+        </span>
       </div>
     );
   }
