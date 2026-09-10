@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# paulina-v.github.io
 
-## Getting Started
+My personal site — [paulina-v.github.io](https://paulina-v.github.io)
 
-First, run the development server:
+Built with Next.js 16 and Tailwind v4, statically exported and deployed to
+GitHub Pages on every push to `main`.
+
+## Running it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # static export to out/
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How it's organized
 
-## Learn More
+Content is kept separate from the components that render it, so updating the
+site means editing data rather than JSX.
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  content/        what the site says
+    profile.ts      name, bio, contact links, portrait
+    experience.ts   roles, ordered most recent first
+    projects.ts     cards and long-form case studies
+  components/     how it looks
+  lib/types.ts    the shape of the content above
+  app/            routes
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Adding a project means appending an object to `projects.ts`. It appears in the
+grid immediately, and its detail page is generated at `/projects/<slug>`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes on a few decisions
 
-## Deploy on Vercel
+**Everything is a Server Component.** There is no `"use client"` in the
+codebase. Hover states, the sticky header, and the "still cooking" badge are
+CSS, so the site ships no client-side JavaScript for interactivity.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Static export.** GitHub Pages serves static files only, so
+`next.config.ts` sets `output: "export"` and disables the image optimizer —
+which is why `public/portrait.jpg` is kept small rather than left at source
+resolution. `public/.nojekyll` stops Pages from stripping the `_next`
+directory.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Color is assigned by contrast, not by preference.** Measured against white,
+the deep iris (9.2:1) and olive (5.4:1) are the only palette colors that carry
+text. The lilac and sage sit at roughly 3:1, so they are limited to decoration —
+the timeline rail, bullet markers, and borders.
+
+**Fonts are declared on `<html>`, not `<body>`,** because Tailwind's `@theme`
+block resolves them at `:root`. Scoped to `<body>` they fall out of range and
+every typeface silently falls back to system sans.
+
+**Missing images degrade rather than break.** The portrait component checks for
+the file at build time and renders a monogram if it isn't there.
