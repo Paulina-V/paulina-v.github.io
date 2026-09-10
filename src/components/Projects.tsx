@@ -8,7 +8,6 @@ export function Projects() {
   return (
     <section id="projects" className="flex flex-col gap-10">
       <SectionHeading
-        eyebrow="Selected work"
         title="Projects"
         intro="Things I've designed, built, and shipped. Click through for details and demos."
       />

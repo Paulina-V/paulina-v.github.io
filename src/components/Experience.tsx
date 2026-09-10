@@ -7,7 +7,7 @@ export function Experience() {
 
   return (
     <section id="experience" className="flex flex-col gap-10">
-      <SectionHeading eyebrow="Where I've worked" title="Experience" />
+      <SectionHeading title="Experience" />
 
       <ol className="relative flex flex-col gap-11">
         {/* Timeline rail — decorative, fades out past the last entry */}

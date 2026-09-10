@@ -4,7 +4,10 @@ import { Portrait } from "@/components/Portrait";
 export function About() {
   return (
     <section id="about" className="scroll-mt-24">
-      <div className="grid items-start gap-10 sm:gap-14 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16">
+      {/* The portrait column is an explicit width, not `auto`: next/image
+          with `fill` is absolutely positioned and has no intrinsic size,
+          so an auto track collapses to zero and the photo disappears. */}
+      <div className="grid items-start gap-10 sm:gap-14 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
         <div className="flex flex-col gap-7">
           <div className="flex flex-col gap-4">
             <p className="font-mono text-xs tracking-[0.16em] text-olive uppercase">
