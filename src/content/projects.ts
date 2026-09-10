@@ -198,7 +198,6 @@ export const projects: Project[] = [
     stack: ["TODO"],
     year: "2026",
     accent: "sage",
-    // Remove this line once it ships.
     status: "cooking",
     demo: { kind: "none" },
     sections: [
@@ -209,6 +208,11 @@ export const projects: Project[] = [
         ],
       },
     ],
+    /**
+     * Hidden until it has a tagline and a stack — an empty card reads as
+     * broken rather than in progress. Delete this line to show it.
+     */
+    published: false,
   },
 ];
 
