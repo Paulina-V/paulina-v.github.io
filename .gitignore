@@ -45,3 +45,7 @@ next-env.d.ts
 
 # Claude Code local config
 .claude/
+
+# Agent instruction files (regenerated locally by next dev)
+CLAUDE.md
+AGENTS.md
