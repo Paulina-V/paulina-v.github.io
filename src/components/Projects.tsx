@@ -7,10 +7,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="flex flex-col gap-10">
-      <SectionHeading
-        title="Projects"
-        intro="Things I've designed, built, and shipped. Click through for details and demos."
-      />
+      <SectionHeading title="Projects" />
 
       <ul className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {publishedProjects.map((project) => (
