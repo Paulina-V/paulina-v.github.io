@@ -22,9 +22,8 @@ export const experience: ExperienceEntry[] = [
       "Esquire provides deposition and litigation support to law firms. I worked on internal tooling for the sales team to make their workflow more efficient.",
     highlights: [
       "Built a lawsuit prioritization algorithm that scores 50,000+ active cases a day on signals like firm size, prior relationship with Esquire, revenue, and other proprietary metrics, so reps know which firms to prioritize for outbound outreach.",
-      "Designed a Salesforce-native LWC dashboard with custom Apex controllers to rank cases and tasks for a 50+ rep sales team — projected to save 80,000+ hours a year and add $2.75M in revenue.",
+      "Designed a Salesforce-native LWC dashboard with custom Apex controllers that ranks cases and tasks and pulls lawsuit information scattered across multiple systems into a single view for a 50+ rep sales team — projected to save 80,000+ hours a year and add $2.75M in revenue.",
       "Optimized slow SOQL queries and restructured data batching so the scoring algorithm could run at full daily scale.",
-      "Consolidated lawsuit information scattered across multiple systems into a single, cleaner view for reps.",
       "Built a manager-facing dashboard mirroring the rep dashboard, adding visibility into historical completion rates and team success metrics.",
       "Proposed and prototyped an LLM-based email integration to auto-generate personalized outbound emails from specific case attributes.",
     ],
