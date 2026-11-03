@@ -38,8 +38,9 @@ export const projects: Project[] = [
       {
         heading: "Context",
         body: [
-          "A piece of clothing's real price isn't what you paid, it's what you paid divided by how many times you've worn it. A $200 coat worn weekly is cheaper than a $30 top worn once.",
-          "The app makes that number visible: log what you wear each day, and it shows which clothes have earned their price and which are just taking up space.",
+          "A friend and I were at the mall recently, walking away from pieces that were too expensive for a college budget. Then we started talking ourselves back into a $250 J.Crew jacket: you'd wear it the rest of your life, so call it ten wears a year for fifty years, and it's fifty cents a wear. Reasonable, obviously.",
+          "The math is real. The fifty years is doing a lot of work. So I built something to find out which half is true — log every wear and watch the number actually come down.",
+          "The goal is to track it for at least a year and see which of those justifications hold up.",
         ],
       },
       {
