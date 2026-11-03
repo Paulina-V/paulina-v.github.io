@@ -28,7 +28,18 @@ export type ExperienceEntry = {
  */
 export type ProjectDemo =
   | { kind: "none" }
-  | { kind: "video"; src: string; poster?: string; caption?: string }
+  | {
+      kind: "video";
+      src: string;
+      poster?: string;
+      caption?: string;
+      /**
+       * "portrait" renders the clip at phone proportions instead of
+       * filling a 16:9 frame — use it for screen recordings from a phone,
+       * which would otherwise be cropped to nothing.
+       */
+      orientation?: "landscape" | "portrait";
+    }
   | { kind: "embed"; src: string; title: string; caption?: string }
   | { kind: "image"; src: string; alt: string; caption?: string };
 

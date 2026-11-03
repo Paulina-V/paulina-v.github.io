@@ -46,8 +46,10 @@ export const experience: ExperienceEntry[] = [
     // CHECK: your résumé doesn't name the language here — add it.
     stack: ["PostgreSQL", "REST APIs"],
     links: [
-      // CHECK: your résumé links "Source Code" here — paste the real URL.
-      { label: "Source code", href: "https://github.com/paulina-v" },
+      {
+        label: "Source code",
+        href: "https://github.com/Paulina-V/Modernized-Black-Hole-Router",
+      },
     ],
   },
 ];

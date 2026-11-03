@@ -16,6 +16,62 @@ import type { Project } from "@/lib/types";
  */
 export const projects: Project[] = [
   {
+    slug: "cpw-analytics",
+    name: "CPW Analytics",
+    tagline:
+      "An iOS app that tracks the cost per wear of everything in my closet.",
+    stack: ["Swift 6", "SwiftUI", "SwiftData", "FastAPI"],
+    year: "2026",
+    role: "Solo project",
+    accent: "iris",
+    links: [
+      { label: "Repo", href: "https://github.com/Paulina-V/cpw-analytics" },
+    ],
+    demo: {
+      kind: "video",
+      src: "/demos/cpw-analytics.mp4",
+      poster: "/demos/cpw-analytics-poster.jpg",
+      orientation: "portrait",
+      caption: "Logging an outfit from a photo, then checking cost per wear.",
+    },
+    sections: [
+      {
+        heading: "Context",
+        body: [
+          "A piece of clothing's real price isn't what you paid, it's what you paid divided by how many times you've worn it. A $200 coat worn weekly is cheaper than a $30 top worn once.",
+          "The app makes that number visible: log what you wear each day, and it shows which clothes have earned their price and which are just taking up space.",
+        ],
+      },
+      {
+        heading: "How it works",
+        body: [
+          "The closet lives on the phone in SwiftData — add items with a photo, filter by category, archive what you've stopped wearing.",
+          "Logging is the part that has to be frictionless, so there are two paths: tap the items you wore, or take one mirror selfie. For a photo, the background is removed on-device with Vision, then Claude matches each visible piece against your existing closet. You confirm or correct the matches in a tap and log the whole outfit at once.",
+          "Insights ranks everything by cost per wear and surfaces what hasn't been worn in 30 days, and what has never been worn at all.",
+        ],
+      },
+      {
+        heading: "The interesting decision",
+        body: [
+          "WRITE: Why split the work between on-device Vision and a server-side vision model, rather than doing it all in one place? Background removal runs locally and matching runs through FastAPI — that boundary is the decision worth explaining, and the tradeoffs are cost, latency, and privacy.",
+        ],
+      },
+      {
+        heading: "What broke",
+        body: [
+          "WRITE: Matching clothes from a photo against a closet is fuzzy by nature. What did it get wrong, and what did you change — the prompt, the crop, the review step?",
+        ],
+      },
+      {
+        heading: "Where it stands",
+        body: [
+          "Manual logging is done, and photo parsing works against a local backend. Everything is stored on the phone; accounts and sync are next.",
+        ],
+      },
+    ],
+    status: "cooking",
+  },
+  {
     slug: "medical-billing-auditor",
     name: "AI Medical Billing Auditor",
     tagline:

@@ -41,6 +41,31 @@ export function ProjectDemo({ demo }: { demo?: Demo }) {
     );
   }
 
+  // A phone screen recording is far taller than it is wide, so it gets its
+  // own frame rather than being cropped into the 16:9 box.
+  if (resolved.kind === "video" && resolved.orientation === "portrait") {
+    return (
+      <figure className="flex flex-col gap-3">
+        <div className="flex justify-center rounded-xl border border-rule bg-surface px-6 py-8">
+          <video
+            className="h-[min(560px,70vh)] w-auto rounded-[26px] border border-rule-strong bg-black shadow-[0_18px_40px_-20px_rgba(28,21,32,0.45)]"
+            src={resolved.src}
+            poster={resolved.poster}
+            controls
+            playsInline
+            preload="metadata"
+          />
+        </div>
+
+        {resolved.caption ? (
+          <figcaption className="text-center font-mono text-[11px] text-ink-muted">
+            {resolved.caption}
+          </figcaption>
+        ) : null}
+      </figure>
+    );
+  }
+
   return (
     <figure className="flex flex-col gap-3">
       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-rule bg-surface-2">
