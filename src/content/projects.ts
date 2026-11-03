@@ -46,7 +46,7 @@ export const projects: Project[] = [
       {
         heading: "How it works",
         body: [
-          "The closet lives on the phone in SwiftData — add items with a photo, filter by category, archive what you've stopped wearing.",
+          "The closet lives on the phone in SwiftData. You add items with a photo, filter by category, and archive what you've stopped wearing.",
           "Logging is the part that has to be frictionless, so there are two paths: tap the items you wore, or take one mirror selfie. For a photo, the background is removed on-device with Vision, then Claude matches each visible piece against your existing closet. You confirm or correct the matches in a tap and log the whole outfit at once.",
           "Insights ranks everything by cost per wear and surfaces what hasn't been worn in 30 days, and what has never been worn at all.",
         ],
@@ -61,12 +61,6 @@ export const projects: Project[] = [
         heading: "What broke",
         body: [
           "WRITE: Matching clothes from a photo against a closet is fuzzy by nature. What did it get wrong, and what did you change — the prompt, the crop, the review step?",
-        ],
-      },
-      {
-        heading: "Where it stands",
-        body: [
-          "Manual logging is done, and photo parsing works against a local backend. Everything is stored on the phone; accounts and sync are next.",
         ],
       },
     ],
