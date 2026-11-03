@@ -69,7 +69,6 @@ export const projects: Project[] = [
         ],
       },
     ],
-    status: "cooking",
   },
   {
     slug: "medical-billing-auditor",
